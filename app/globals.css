@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apple-style baseline: anti-aliased text, generous line-height, neutral surface. */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-surface text-ink;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Focus ring tuned for accessibility without looking heavy. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/60 ring-offset-2 ring-offset-surface;
+  }
+}
+
+@layer components {
+  /* Frosted-glass card used on the dashboard and elsewhere. */
+  .glass-card {
+    @apply rounded-2xl border border-black/5 bg-white/70 shadow-card backdrop-blur-xl;
+  }
+
+  /* Soft section heading — balances density on the dashboard. */
+  .section-title {
+    @apply text-sm font-medium uppercase tracking-[0.14em] text-ink-muted;
+  }
+}
