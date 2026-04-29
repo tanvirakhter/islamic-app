@@ -19,6 +19,7 @@ export function Footer() {
           <FooterLink href="/quran">{t("nav.quran")}</FooterLink>
           <FooterLink href="/prayer-times">{t("nav.prayerTimes")}</FooterLink>
           <FooterLink href="/qibla">{t("nav.qibla")}</FooterLink>
+          <FooterLink href="/zakat">{t("nav.zakat")}</FooterLink>
           <FooterLink href="/ramadan">{t("nav.ramadan")}</FooterLink>
         </FooterCol>
 

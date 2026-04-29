@@ -10,6 +10,12 @@ import { HijriDateCard } from "@/components/dashboard/HijriDateCard";
 import { QiblaCard } from "@/components/dashboard/QiblaCard";
 import { getServerTranslator } from "@/lib/i18n/server";
 import { gregorianToBengali } from "@/lib/bengali-calendar";
+import {
+  hijriEraSuffix,
+  localizedHijriDay,
+  localizedHijriMonth,
+  localizedHijriYear,
+} from "@/lib/hijri";
 
 // Re-render at most every 30 minutes so the "Next prayer in …" countdown stays fresh
 // while still serving from Vercel's CDN for the rest of the time.
@@ -39,6 +45,10 @@ export default async function DashboardPage() {
     locale === "bn"
       ? `${bengali.dayBn} ${bengali.monthBn} ${bengali.yearBn} বঙ্গাব্দ`
       : `${bengali.day} ${bengali.monthEn} ${bengali.year} BS`;
+  const hijriPretty = `${localizedHijriDay(prayer.hijri, locale)} ${localizedHijriMonth(
+    prayer.hijri,
+    locale
+  )} ${localizedHijriYear(prayer.hijri, locale)} ${hijriEraSuffix(locale)}`;
 
   return (
     <div className="bg-hero-radial">
@@ -49,9 +59,7 @@ export default async function DashboardPage() {
         </h1>
         <p className={`mt-3 max-w-2xl text-base text-ink-muted sm:text-lg ${fontClass}`}>
           {t("dashboard.heroSubtitle")}{" "}
-          <span className="text-ink">
-            {prayer.hijri.day} {prayer.hijri.month} {prayer.hijri.year} AH
-          </span>
+          <span className="text-ink">{hijriPretty}</span>
           <span className="mx-2 text-ink-subtle">·</span>
           <span className="text-ink">{bengaliPretty}</span>
           <span className="mx-2 text-ink-subtle">·</span>

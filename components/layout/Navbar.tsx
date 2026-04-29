@@ -15,6 +15,7 @@ const NAV_ITEMS: Array<{ href: string; key: DictionaryKey }> = [
   { href: "/quran", key: "nav.quran" },
   { href: "/prayer-times", key: "nav.prayerTimes" },
   { href: "/qibla", key: "nav.qibla" },
+  { href: "/zakat", key: "nav.zakat" },
   { href: "/ramadan", key: "nav.ramadan" },
   { href: "/hajj", key: "nav.hajj" },
   { href: "/umrah", key: "nav.umrah" },

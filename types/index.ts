@@ -16,10 +16,10 @@ export interface PrayerTime {
 
 export interface HijriDate {
   day: string;
-  month: string; // English transliteration, e.g. "Ramadan"
-  monthBangla?: string;
+  month: string; // English transliteration, e.g. "Dhū al-Qaʿdah"
+  monthNumber: number; // 1–12, used as the stable key for localization
   year: string;
-  weekday: string;
+  weekday: string; // English, e.g. "Wednesday"
 }
 
 export interface PrayerTimesResponse {

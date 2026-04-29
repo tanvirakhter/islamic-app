@@ -6,6 +6,7 @@ import { fetchPrayerTimes } from "@/lib/api/prayer-times";
 import { BANGLADESH_CITIES, DEFAULT_CITY, findCityBySlug } from "@/lib/cities";
 import { cn } from "@/lib/utils";
 import { getServerTranslator } from "@/lib/i18n/server";
+import { JummaCard } from "@/components/prayer/JummaCard";
 
 export const revalidate = 1800;
 
@@ -71,6 +72,10 @@ export default async function PrayerTimesPage({ searchParams }: Props) {
             );
           })}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 pb-6 sm:px-8">
+        <JummaCard city={cityName} timings={data.timings} />
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8">

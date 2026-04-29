@@ -11,6 +11,7 @@ export const dictionary = {
     "nav.hajj": "Hajj",
     "nav.umrah": "Umrah",
     "nav.qibla": "Qibla",
+    "nav.zakat": "Zakat",
     "nav.toggleAria": "Toggle navigation",
     "lang.label": "Language",
     "lang.english": "English",
@@ -41,6 +42,24 @@ export const dictionary = {
     "card.nextPrayer": "Next Prayer",
     "card.in": "In",
     "card.at": "at",
+
+    "prayer.rakats": "Rakats",
+    "prayer.totalRakats": "rakats total",
+    "prayer.endsAt": "Ends at",
+    "prayer.endsAtNextDay": "Ends before Fajr (next day)",
+    "prayer.sunriseNote":
+      "Sunrise is the cutoff for Fajr — it is not itself a prayer.",
+    "prayer.tapForDetails": "Tap for rakats & end time",
+
+    "jumma.title": "Jumma",
+    "jumma.today": "Today is Jumma",
+    "jumma.upcoming": "Upcoming Jumma",
+    "jumma.adhan": "Dhuhr Adhan",
+    "jumma.latestStart": "Latest start (before Asr)",
+    "jumma.khutbahNote":
+      "The khutbah typically begins 15–30 minutes after the Dhuhr adhan, depending on the masjid.",
+    "jumma.replacesDhuhr":
+      "Jumma is performed in congregation in place of Dhuhr on Fridays.",
 
     "prayer.Fajr": "Fajr",
     "prayer.Sunrise": "Sunrise",
@@ -83,6 +102,46 @@ export const dictionary = {
     "page.qibla.title": "Find the direction of the Ka'bah",
     "page.qibla.description":
       "Calculated from your live location using the great-circle bearing — works anywhere in Bangladesh and the world.",
+
+    "page.zakat.eyebrow": "Zakat Calculator",
+    "page.zakat.title": "Calculate your Zakat",
+    "page.zakat.description":
+      "Enter your zakatable assets and short-term debts. Zakat is 2.5% of net wealth held above the nisab for one lunar year.",
+    "zakat.section.assets": "Assets",
+    "zakat.section.liabilities": "Liabilities",
+    "zakat.section.settings": "Settings",
+    "zakat.field.cash": "Cash, bank & mobile wallets",
+    "zakat.field.cashHint": "Includes bKash, Nagad, Rocket balances",
+    "zakat.field.gold": "Gold (value)",
+    "zakat.field.goldHint": "Market value of jewellery and bullion in BDT",
+    "zakat.field.silver": "Silver (value)",
+    "zakat.field.silverHint": "Market value of silver in BDT",
+    "zakat.field.investments": "Investments / stocks",
+    "zakat.field.investmentsHint": "Current market value of shares & funds",
+    "zakat.field.business": "Business inventory",
+    "zakat.field.businessHint": "Goods held for sale, at market price",
+    "zakat.field.receivables": "Loans receivable",
+    "zakat.field.receivablesHint": "Money lent that you expect to be repaid",
+    "zakat.field.debts": "Short-term debts",
+    "zakat.field.debtsHint": "Due within 12 months: bills, rent, instalments",
+    "zakat.field.basis": "Nisab basis",
+    "zakat.field.basisHint":
+      "Silver basis is lower, so it captures more wealth as zakatable — the recommended choice when you have mixed assets.",
+    "zakat.field.goldPrice": "Gold price (BDT / gram)",
+    "zakat.field.silverPrice": "Silver price (BDT / gram)",
+    "zakat.field.priceHint": "Update with the current market price",
+    "zakat.basis.silver": "Silver (recommended)",
+    "zakat.basis.gold": "Gold",
+    "zakat.summary.title": "Your Zakat",
+    "zakat.summary.totalAssets": "Total assets",
+    "zakat.summary.netWealth": "Net wealth (after debts)",
+    "zakat.summary.nisab": "Nisab threshold",
+    "zakat.summary.zakatDue": "Zakat due (2.5%)",
+    "zakat.summary.belowNisab":
+      "Your net wealth is below the nisab — no zakat is due this year.",
+    "zakat.summary.note":
+      "This is an estimate. Confirm details with a qualified scholar before paying.",
+    "zakat.reset": "Reset",
 
     "footer.tagline":
       "A modern Islamic companion built for Bangladesh — Quran with Bangla translation, prayer times, Ramadan and Hajj guides.",
@@ -160,6 +219,7 @@ export const dictionary = {
     "nav.hajj": "হজ্জ",
     "nav.umrah": "উমরাহ",
     "nav.qibla": "কিবলা",
+    "nav.zakat": "যাকাত",
     "nav.toggleAria": "মেনু খুলুন",
     "lang.label": "ভাষা",
     "lang.english": "English",
@@ -190,6 +250,24 @@ export const dictionary = {
     "card.nextPrayer": "পরবর্তী নামাজ",
     "card.in": "বাকি",
     "card.at": "—",
+
+    "prayer.rakats": "রাকাত",
+    "prayer.totalRakats": "রাকাত মোট",
+    "prayer.endsAt": "শেষ হয়",
+    "prayer.endsAtNextDay": "ফজরের আগে শেষ হয় (পরের দিন)",
+    "prayer.sunriseNote":
+      "সূর্যোদয় ফজরের শেষ সীমা — এটি নিজে কোনো নামাজ নয়।",
+    "prayer.tapForDetails": "রাকাত ও সময় দেখতে ট্যাপ করুন",
+
+    "jumma.title": "জুমা",
+    "jumma.today": "আজ জুমা",
+    "jumma.upcoming": "আসন্ন জুমা",
+    "jumma.adhan": "যোহরের আযান",
+    "jumma.latestStart": "সর্বশেষ শুরু (আসরের পূর্বে)",
+    "jumma.khutbahNote":
+      "খুতবা সাধারণত যোহরের আযানের ১৫–৩০ মিনিট পর শুরু হয়, মসজিদভেদে ভিন্ন হতে পারে।",
+    "jumma.replacesDhuhr":
+      "শুক্রবার যোহরের পরিবর্তে জামায়াতে জুমার নামাজ আদায় করা হয়।",
 
     "prayer.Fajr": "ফজর",
     "prayer.Sunrise": "সূর্যোদয়",
@@ -232,6 +310,46 @@ export const dictionary = {
     "page.qibla.title": "কাবার দিক নির্ণয় করুন",
     "page.qibla.description":
       "আপনার লাইভ অবস্থান থেকে গ্রেট-সার্কেল দিকনির্দেশ গণনা করে — বাংলাদেশ ও বিশ্বের যেকোনো জায়গায় কাজ করে।",
+
+    "page.zakat.eyebrow": "যাকাত ক্যালকুলেটর",
+    "page.zakat.title": "আপনার যাকাত হিসাব করুন",
+    "page.zakat.description":
+      "আপনার যাকাতযোগ্য সম্পদ ও স্বল্পমেয়াদী ঋণ লিখুন। নিসাবের ঊর্ধ্বে এক চান্দ্রবর্ষ থাকা সম্পদের ২.৫% যাকাত হিসেবে দিতে হয়।",
+    "zakat.section.assets": "সম্পদ",
+    "zakat.section.liabilities": "দায়",
+    "zakat.section.settings": "সেটিংস",
+    "zakat.field.cash": "নগদ, ব্যাংক ও মোবাইল ওয়ালেট",
+    "zakat.field.cashHint": "বিকাশ, নগদ, রকেট ব্যালান্স অন্তর্ভুক্ত",
+    "zakat.field.gold": "স্বর্ণ (মূল্য)",
+    "zakat.field.goldHint": "অলংকার ও বুলিয়নের বাজারমূল্য (টাকায়)",
+    "zakat.field.silver": "রৌপ্য (মূল্য)",
+    "zakat.field.silverHint": "রৌপ্যের বাজারমূল্য (টাকায়)",
+    "zakat.field.investments": "বিনিয়োগ / শেয়ার",
+    "zakat.field.investmentsHint": "শেয়ার ও ফান্ডের বর্তমান বাজারমূল্য",
+    "zakat.field.business": "ব্যবসায়িক পণ্য",
+    "zakat.field.businessHint": "বিক্রয়ের জন্য রক্ষিত পণ্যের বাজারমূল্য",
+    "zakat.field.receivables": "প্রাপ্য ঋণ",
+    "zakat.field.receivablesHint": "যে টাকা ধার দিয়েছেন এবং ফেরত পাবেন বলে আশা করেন",
+    "zakat.field.debts": "স্বল্পমেয়াদী ঋণ",
+    "zakat.field.debtsHint": "১২ মাসের মধ্যে পরিশোধযোগ্য: বিল, ভাড়া, কিস্তি",
+    "zakat.field.basis": "নিসাবের ভিত্তি",
+    "zakat.field.basisHint":
+      "রৌপ্যের ভিত্তি কম, তাই মিশ্র সম্পদ থাকলে এটি বেছে নেওয়াই উত্তম — বেশি সম্পদ যাকাতযোগ্য হয়।",
+    "zakat.field.goldPrice": "স্বর্ণের মূল্য (টাকা / গ্রাম)",
+    "zakat.field.silverPrice": "রৌপ্যের মূল্য (টাকা / গ্রাম)",
+    "zakat.field.priceHint": "বর্তমান বাজারমূল্য অনুযায়ী আপডেট করুন",
+    "zakat.basis.silver": "রৌপ্য (প্রস্তাবিত)",
+    "zakat.basis.gold": "স্বর্ণ",
+    "zakat.summary.title": "আপনার যাকাত",
+    "zakat.summary.totalAssets": "মোট সম্পদ",
+    "zakat.summary.netWealth": "নিট সম্পদ (ঋণ বাদ দিয়ে)",
+    "zakat.summary.nisab": "নিসাব সীমা",
+    "zakat.summary.zakatDue": "প্রদেয় যাকাত (২.৫%)",
+    "zakat.summary.belowNisab":
+      "আপনার নিট সম্পদ নিসাবের নিচে — এই বছর কোনো যাকাত প্রযোজ্য নয়।",
+    "zakat.summary.note":
+      "এটি একটি আনুমানিক হিসাব। পরিশোধের আগে যোগ্য আলেমের পরামর্শ নিন।",
+    "zakat.reset": "রিসেট",
 
     "footer.tagline":
       "বাংলাদেশের জন্য তৈরি একটি আধুনিক ইসলামিক সঙ্গী — বাংলা অনুবাদসহ কুরআন, নামাজের সময়, রমজান ও হজ্জের নির্দেশিকা।",

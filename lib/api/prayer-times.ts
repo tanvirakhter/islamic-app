@@ -58,6 +58,7 @@ function toHijri(date: AladhanDate): HijriDate {
   return {
     day: date.hijri.day,
     month: date.hijri.month.en,
+    monthNumber: date.hijri.month.number,
     year: date.hijri.year,
     weekday: date.hijri.weekday.en,
   };

@@ -1,10 +1,20 @@
 import Link from "next/link";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getNextPrayer } from "@/lib/api/prayer-times";
-import type { PrayerTime } from "@/types";
+import type { PrayerName, PrayerTime } from "@/types";
 import { cn } from "@/lib/utils";
-import { Sun, Moon, Sunrise, Sunset, CloudSun, Stars } from "lucide-react";
+import {
+  Sun,
+  Moon,
+  Sunrise,
+  Sunset,
+  CloudSun,
+  Stars,
+  ChevronDown,
+} from "lucide-react";
 import { getServerTranslator } from "@/lib/i18n/server";
+import { getRakats, getEndTime, totalRakats } from "@/lib/prayer-info";
+import { toBanglaDigits } from "@/lib/bengali-calendar";
 
 interface Props {
   city: string;
@@ -40,7 +50,6 @@ export function PrayerTimesCard({ city, timings }: Props) {
   const next = getNextPrayer(timings);
   const fontClass = locale === "bn" ? "font-bangla" : "";
 
-  // Localized prayer name lookup — uses dictionary keys keyed by canonical English names.
   const prayerName = (name: string) =>
     t(`prayer.${name}` as const as "prayer.Fajr") ?? name;
 
@@ -82,34 +91,111 @@ export function PrayerTimesCard({ city, timings }: Props) {
         </div>
       )}
 
+      <p className={`mb-2 text-xs text-ink-muted ${fontClass}`}>
+        {t("prayer.tapForDetails")}
+      </p>
+
+      {/* Each prayer is a native <details> — accessible, no JS needed.
+          Tapping the row reveals rakats and the prayer-window end time. */}
       <ul className="grid gap-2 sm:grid-cols-2">
         {timings.map((p) => {
           const Icon = PRAYER_ICONS[p.name] ?? Stars;
           const isNext = next?.prayer.name === p.name;
+          const isSunrise = p.name === "Sunrise";
+          const end = getEndTime(p.name as PrayerName, timings);
+          const rakats = isSunrise ? [] : getRakats(p.name as PrayerName, locale);
+          const total = isSunrise ? 0 : totalRakats(p.name as PrayerName);
+          const totalDisplay = locale === "bn" ? toBanglaDigits(total) : String(total);
+
           return (
-            <li
-              key={p.name}
-              className={cn(
-                "flex items-center justify-between rounded-xl px-4 py-3 transition-colors",
-                isNext ? "bg-brand-50 ring-1 ring-brand-200" : "hover:bg-black/[0.03]"
-              )}
-            >
-              <div className="flex items-center gap-3">
-                <span
+            <li key={p.name}>
+              <details
+                className={cn(
+                  "group rounded-xl transition-colors",
+                  isNext ? "bg-brand-50 ring-1 ring-brand-200" : "hover:bg-black/[0.03]"
+                )}
+              >
+                <summary
                   className={cn(
-                    "grid h-9 w-9 place-items-center rounded-full",
-                    isNext ? "bg-brand-600 text-white" : "bg-surface-alt text-ink-soft"
+                    "flex cursor-pointer items-center justify-between px-4 py-3",
+                    "marker:hidden [&::-webkit-details-marker]:hidden"
                   )}
                 >
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span className={cn("text-sm font-medium text-ink", fontClass)}>
-                  {prayerName(p.name)}
-                </span>
-              </div>
-              <span className="font-mono text-sm tabular-nums text-ink-soft">
-                {to12h(p.time)}
-              </span>
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={cn(
+                        "grid h-9 w-9 place-items-center rounded-full",
+                        isNext ? "bg-brand-600 text-white" : "bg-surface-alt text-ink-soft"
+                      )}
+                    >
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span className={cn("text-sm font-medium text-ink", fontClass)}>
+                      {prayerName(p.name)}
+                    </span>
+                  </div>
+                  <span className="flex items-center gap-2">
+                    <span className="font-mono text-sm tabular-nums text-ink-soft">
+                      {to12h(p.time)}
+                    </span>
+                    <ChevronDown
+                      className="h-4 w-4 text-ink-muted transition-transform group-open:rotate-180"
+                      aria-hidden
+                    />
+                  </span>
+                </summary>
+
+                <div className="border-t border-black/5 px-4 py-3">
+                  {isSunrise ? (
+                    <p className={`text-sm text-ink-soft ${fontClass}`}>
+                      {t("prayer.sunriseNote")}
+                    </p>
+                  ) : (
+                    <>
+                      <div className="flex items-baseline justify-between">
+                        <p className={`section-title ${fontClass}`}>
+                          {t("prayer.rakats")}
+                        </p>
+                        <p className={`text-xs text-ink-muted ${fontClass}`}>
+                          {totalDisplay} {t("prayer.totalRakats")}
+                        </p>
+                      </div>
+                      <ul className="mt-2 grid gap-1">
+                        {rakats.map((r, i) => (
+                          <li
+                            key={`${p.name}-${i}`}
+                            className="flex items-center justify-between text-sm"
+                          >
+                            <span className={`text-ink ${fontClass}`}>{r.label}</span>
+                            <span className={`tabular-nums text-ink-soft ${fontClass}`}>
+                              {r.count}{" "}
+                              <span className="text-xs text-ink-muted">
+                                {t("prayer.rakats")}
+                              </span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {end && (
+                        <div className="mt-3 flex items-baseline justify-between border-t border-black/5 pt-3">
+                          <p className={`section-title ${fontClass}`}>
+                            {p.name === "Isha"
+                              ? t("prayer.endsAtNextDay")
+                              : t("prayer.endsAt")}
+                          </p>
+                          <p className={`text-sm text-ink ${fontClass}`}>
+                            <span className={fontClass}>{prayerName(end.nextPrayer)}</span>{" "}
+                            <span className="font-mono tabular-nums text-ink-soft">
+                              · {to12h(end.time)}
+                            </span>
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </details>
             </li>
           );
         })}

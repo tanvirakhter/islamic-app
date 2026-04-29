@@ -2,7 +2,14 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import type { HijriDate } from "@/types";
 import { CalendarDays } from "lucide-react";
 import { getServerTranslator } from "@/lib/i18n/server";
-import { gregorianToBengali, toBanglaDigits } from "@/lib/bengali-calendar";
+import { gregorianToBengali } from "@/lib/bengali-calendar";
+import {
+  hijriEraSuffix,
+  localizedHijriDay,
+  localizedHijriMonth,
+  localizedHijriWeekday,
+  localizedHijriYear,
+} from "@/lib/hijri";
 
 interface Props {
   hijri: HijriDate;
@@ -13,16 +20,20 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
   const { t, locale } = getServerTranslator();
   const fontClass = locale === "bn" ? "font-bangla" : "";
 
-  // Hero: Hijri (matters most for an Islamic app).
-  // Then a stacked secondary block with Bengali (BD) + Gregorian.
+  const hijriDay = localizedHijriDay(hijri, locale);
+  const hijriMonth = localizedHijriMonth(hijri, locale);
+  const hijriYear = localizedHijriYear(hijri, locale);
+  const hijriWeekday = localizedHijriWeekday(hijri, locale);
+  const hijriEra = hijriEraSuffix(locale);
+
+  // Bangabda (BD revised Bengali calendar) — derived from the same date so
+  // all three calendars in this card stay aligned.
   const [d, m, y] = gregorian.split("-").map(Number);
   const gregorianDate = new Date(Date.UTC(y, m - 1, d));
   const gregorianReadable = gregorianDate.toLocaleDateString(
     locale === "bn" ? "bn-BD" : "en-GB",
     { weekday: "long", day: "numeric", month: "long", year: "numeric" }
   );
-
-  // Bangabda — derived from the same anchor date so all three calendars stay aligned.
   const bengali = gregorianToBengali(gregorianDate);
   const bengaliDay = locale === "bn" ? bengali.dayBn : String(bengali.day);
   const bengaliMonth = locale === "bn" ? bengali.monthBn : bengali.monthEn;
@@ -38,14 +49,14 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
 
       {/* Hijri — primary, large. */}
       <div className="flex items-baseline gap-3">
-        <p className="text-5xl font-semibold tracking-tight">{hijri.day}</p>
-        <p className="text-lg font-medium text-ink-soft">{hijri.month}</p>
+        <p className={`text-5xl font-semibold tracking-tight ${fontClass}`}>{hijriDay}</p>
+        <p className={`text-lg font-medium text-ink-soft ${fontClass}`}>{hijriMonth}</p>
       </div>
-      <p className="mt-1 text-sm text-ink-muted">
-        {hijri.year} AH · {hijri.weekday}
+      <p className={`mt-1 text-sm text-ink-muted ${fontClass}`}>
+        {hijriYear} {hijriEra} · {hijriWeekday}
       </p>
 
-      {/* Bangabda — secondary, kept compact. */}
+      {/* Bangabda — secondary. */}
       <div className="mt-6 border-t border-black/5 pt-4">
         <p className={`section-title ${fontClass}`}>{t("card.bengali")}</p>
         <p className={`mt-1 text-base font-medium text-ink ${fontClass}`}>
