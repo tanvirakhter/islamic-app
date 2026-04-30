@@ -70,8 +70,15 @@ export const dictionary = {
 
     "page.quran.eyebrow": "Quran",
     "page.quran.title": "The Holy Quran",
-    "page.quran.description": "Read with Bangla translation. Tap any surah to begin.",
+    "page.quran.description": "All 114 surahs with Bangla translation. Tap any surah to begin.",
     "page.quran.ayahs": "ayahs",
+    "page.quran.searchPlaceholder": "Search surah by name or number…",
+    "page.quran.noResults": "No surahs match your search.",
+    "page.quran.surahCount": "114 surahs",
+    "quran.meccan": "Meccan",
+    "quran.medinan": "Medinan",
+    "quran.backToList": "All surahs",
+    "quran.bismillah": "In the name of Allah, the Most Gracious, the Most Merciful.",
 
     "page.prayerTimes.eyebrow": "Prayer Timetable",
     "page.prayerTimes.titlePrefix": "Prayer times in",
@@ -278,8 +285,15 @@ export const dictionary = {
 
     "page.quran.eyebrow": "কুরআন",
     "page.quran.title": "পবিত্র কুরআন",
-    "page.quran.description": "বাংলা অনুবাদসহ পড়ুন। শুরু করতে যেকোনো সূরায় ক্লিক করুন।",
+    "page.quran.description": "বাংলা অনুবাদসহ ১১৪টি সূরা। শুরু করতে যেকোনো সূরায় ক্লিক করুন।",
     "page.quran.ayahs": "আয়াত",
+    "page.quran.searchPlaceholder": "নাম বা নম্বর দিয়ে সূরা খুঁজুন…",
+    "page.quran.noResults": "কোনো সূরা পাওয়া যায়নি।",
+    "page.quran.surahCount": "১১৪টি সূরা",
+    "quran.meccan": "মাক্কী",
+    "quran.medinan": "মাদানী",
+    "quran.backToList": "সব সূরা",
+    "quran.bismillah": "পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে।",
 
     "page.prayerTimes.eyebrow": "নামাজের সময়সূচি",
     "page.prayerTimes.titlePrefix": "নামাজের সময় —",
