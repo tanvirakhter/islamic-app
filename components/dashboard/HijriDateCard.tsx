@@ -1,6 +1,5 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
-import type { HijriDate } from "@/types";
 import { CalendarDays } from "lucide-react";
+import type { HijriDate } from "@/types";
 import { getServerTranslator } from "@/lib/i18n/server";
 import { gregorianToBengali } from "@/lib/bengali-calendar";
 import {
@@ -16,6 +15,11 @@ interface Props {
   gregorian: string; // "DD-MM-YYYY" from Aladhan
 }
 
+// "Lapis to Turquoise" gradient — a full blue spectrum sweep used as the
+// feature surface for the multi-calendar card.
+const LAPIS_TURQUOISE =
+  "linear-gradient(160deg, #1B3A8C 0%, #2B5BA8 45%, #3B8FA0 80%, #4AADBE 100%)";
+
 export function HijriDateCard({ hijri, gregorian }: Props) {
   const { t, locale } = getServerTranslator();
   const fontClass = locale === "bn" ? "font-bangla" : "";
@@ -26,8 +30,6 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
   const hijriWeekday = localizedHijriWeekday(hijri, locale);
   const hijriEra = hijriEraSuffix(locale);
 
-  // Bangabda (BD revised Bengali calendar) — derived from the same date so
-  // all three calendars in this card stay aligned.
   const [d, m, y] = gregorian.split("-").map(Number);
   const gregorianDate = new Date(Date.UTC(y, m - 1, d));
   const gregorianReadable = gregorianDate.toLocaleDateString(
@@ -40,36 +42,51 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
   const bengaliYear = locale === "bn" ? bengali.yearBn : String(bengali.year);
   const bengaliWeekday = locale === "bn" ? bengali.weekdayBn : bengali.weekdayEn;
 
+  // Inline style avoids fighting Tailwind's bg utilities; the surface fully owns
+  // its appearance. Text/border colors are tuned for legibility on the deep gradient.
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("card.today")}</CardTitle>
-        <CalendarDays className="h-4 w-4 text-ink-muted" aria-hidden />
-      </CardHeader>
+    <div
+      className="rounded-2xl border border-white/10 p-6 text-white shadow-card"
+      style={{ background: LAPIS_TURQUOISE }}
+    >
+      <div className="mb-4 flex items-center justify-between">
+        <p
+          className={`text-sm font-medium uppercase tracking-[0.14em] text-white/60 ${fontClass}`}
+        >
+          {t("card.today")}
+        </p>
+        <CalendarDays className="h-4 w-4 text-white/60" aria-hidden />
+      </div>
 
       {/* Hijri — primary, large. */}
       <div className="flex items-baseline gap-3">
         <p className={`text-5xl font-semibold tracking-tight ${fontClass}`}>{hijriDay}</p>
-        <p className={`text-lg font-medium text-ink-soft ${fontClass}`}>{hijriMonth}</p>
+        <p className={`text-lg font-medium text-white/85 ${fontClass}`}>{hijriMonth}</p>
       </div>
-      <p className={`mt-1 text-sm text-ink-muted ${fontClass}`}>
+      <p className={`mt-1 text-sm text-white/65 ${fontClass}`}>
         {hijriYear} {hijriEra} · {hijriWeekday}
       </p>
 
       {/* Bangabda — secondary. */}
-      <div className="mt-6 border-t border-black/5 pt-4">
-        <p className={`section-title ${fontClass}`}>{t("card.bengali")}</p>
-        <p className={`mt-1 text-base font-medium text-ink ${fontClass}`}>
+      <div className="mt-6 border-t border-white/10 pt-4">
+        <p
+          className={`text-sm font-medium uppercase tracking-[0.14em] text-white/60 ${fontClass}`}
+        >
+          {t("card.bengali")}
+        </p>
+        <p className={`mt-1 text-base font-medium text-white ${fontClass}`}>
           {bengaliDay} {bengaliMonth}, {bengaliYear} {t("card.bengaliSuffix")}
         </p>
-        <p className={`text-xs text-ink-muted ${fontClass}`}>{bengaliWeekday}</p>
+        <p className={`text-xs text-white/65 ${fontClass}`}>{bengaliWeekday}</p>
       </div>
 
       {/* Gregorian — tertiary. */}
-      <div className="mt-4 border-t border-black/5 pt-4">
-        <p className="section-title">{t("card.gregorian")}</p>
-        <p className={`mt-1 text-sm text-ink-soft ${fontClass}`}>{gregorianReadable}</p>
+      <div className="mt-4 border-t border-white/10 pt-4">
+        <p className="text-sm font-medium uppercase tracking-[0.14em] text-white/60">
+          {t("card.gregorian")}
+        </p>
+        <p className={`mt-1 text-sm text-white/80 ${fontClass}`}>{gregorianReadable}</p>
       </div>
-    </Card>
+    </div>
   );
 }

@@ -7,10 +7,10 @@ import { Menu, X, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
-import type { DictionaryKey } from "@/lib/i18n/dictionary";
+import type { StringDictionaryKey } from "@/lib/i18n/dictionary";
 
 // href → translation key. Single source of truth so the mobile drawer reuses it.
-const NAV_ITEMS: Array<{ href: string; key: DictionaryKey }> = [
+const NAV_ITEMS: Array<{ href: string; key: StringDictionaryKey }> = [
   { href: "/", key: "nav.dashboard" },
   { href: "/quran", key: "nav.quran" },
   { href: "/prayer-times", key: "nav.prayerTimes" },
@@ -29,11 +29,14 @@ export function Navbar() {
   // Bangla labels are visually denser; switch to the bangla font stack when active.
   const linkFont = locale === "bn" ? "font-bangla" : "";
 
+  // No bottom border — the rounded-card edge of <main> creates the seam.
+  // Slightly more translucent bg so the navbar reads as a calmer surface
+  // sitting *behind* the page card.
   return (
-    <header className="sticky top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 bg-surface-alt/80 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-600 text-white shadow-sm">
+          <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-600 text-white">
             <Moon className="h-4 w-4" aria-hidden />
           </span>
           <span className="text-base">

@@ -51,7 +51,7 @@ export default async function DashboardPage() {
   )} ${localizedHijriYear(prayer.hijri, locale)} ${hijriEraSuffix(locale)}`;
 
   return (
-    <div className="bg-hero-radial">
+    <div className="rounded-t-3xl bg-hero-radial">
       <section className="mx-auto max-w-7xl px-5 pb-6 pt-12 sm:px-8 sm:pt-20">
         <p className={`section-title ${fontClass}`}>{t("dashboard.greeting")}</p>
         <h1 className={`mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl ${fontClass}`}>

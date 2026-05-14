@@ -11,12 +11,12 @@ import {
   type ReactNode,
 } from "react";
 import { LOCALE_COOKIE, type Locale } from "./config";
-import { dictionary, translate, type DictionaryKey } from "./dictionary";
+import { translate, type StringDictionaryKey } from "./dictionary";
 
 interface LanguageContextValue {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: <K extends DictionaryKey>(key: K) => (typeof dictionary)["en"][K];
+  t: <K extends StringDictionaryKey>(key: K) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);

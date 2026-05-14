@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import { getServerLocale } from "@/lib/i18n/server";
+import { SplashScreen } from "@/components/SplashScreen";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -50,10 +51,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-dvh bg-surface antialiased">
+      {/*
+        Body is tinted (surface-alt) so the rounded-top <main> reads as a
+        distinct "card" sitting under the navbar. The Navbar stays sticky and
+        translucent above; the gap between its bottom edge and the card's
+        rounded corners lets the body color show through.
+      */}
+      <body className="min-h-dvh bg-surface-alt antialiased">
         <LanguageProvider initialLocale={locale}>
+          {/* Plays on every fresh page load; auto-dismisses and unmounts itself. */}
+          <SplashScreen />
           <Navbar />
-          <main>{children}</main>
+          {/* `overflow-hidden` is intentionally NOT set here — that would break
+              `position: sticky` (e.g. the Zakat summary card). Instead, any
+              top-level page section that paints its own background clips its
+              own top corners with `rounded-t-3xl`. */}
+          {/* Downward-only shadow — the navbar must stay shadow-free per design. */}
+          <main className="rounded-t-3xl bg-surface shadow-[0_14px_34px_rgba(0,0,0,0.06)]">
+            {children}
+          </main>
           <Footer />
         </LanguageProvider>
       </body>

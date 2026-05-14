@@ -17,6 +17,9 @@ export const dictionary = {
     "lang.english": "English",
     "lang.bangla": "বাংলা",
 
+    "common.loading": "Loading…",
+    "common.loadingSurah": "Opening surah…",
+    "common.loadingDashboard": "Preparing your dashboard…",
     "common.viewAll": "View all",
     "common.fullTimetable": "Full timetable →",
     "common.readQuran": "Read the Quran →",
@@ -33,7 +36,7 @@ export const dictionary = {
 
     "card.today": "Today",
     "card.gregorian": "Gregorian",
-    "card.bengali": "Bangla (BD)",
+    "card.bengali": "Bangla",
     "card.bengaliSuffix": "Bangabda",
     "card.prayerTimes": "Prayer Times",
     "card.ayatOfDay": "Ayat of the Day",
@@ -232,6 +235,9 @@ export const dictionary = {
     "lang.english": "English",
     "lang.bangla": "বাংলা",
 
+    "common.loading": "লোড হচ্ছে…",
+    "common.loadingSurah": "সূরা খোলা হচ্ছে…",
+    "common.loadingDashboard": "আপনার ড্যাশবোর্ড প্রস্তুত হচ্ছে…",
     "common.viewAll": "সব দেখুন",
     "common.fullTimetable": "সম্পূর্ণ সময়সূচি →",
     "common.readQuran": "কুরআন পড়ুন →",
@@ -436,12 +442,22 @@ export const dictionary = {
 
 export type DictionaryKey = keyof (typeof dictionary)["en"];
 
+// Some dictionary entries are arrays of structured steps (e.g. hajj.steps,
+// umrah.steps) and should be accessed via `raw[...]` rather than `t()`.
+// `StringDictionaryKey` narrows to only those entries whose value is a string,
+// so callers of `t()` always get a renderable ReactNode.
+export type StringDictionaryKey = {
+  [K in keyof (typeof dictionary)["en"]]: (typeof dictionary)["en"][K] extends string
+    ? K
+    : never;
+}[keyof (typeof dictionary)["en"]];
+
 // Type-safe translator. Returns the value for the current locale, falling back to English
 // (which is required to be complete via the `as const` shape above).
-export function translate<K extends DictionaryKey>(
+export function translate<K extends StringDictionaryKey>(
   locale: Locale,
   key: K
-): (typeof dictionary)["en"][K] {
+): string {
   const dict = dictionary[locale] as (typeof dictionary)["en"];
-  return dict[key] ?? dictionary.en[key];
+  return (dict[key] as string) ?? (dictionary.en[key] as string);
 }

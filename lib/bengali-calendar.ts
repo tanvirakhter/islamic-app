@@ -131,7 +131,9 @@ export function gregorianToBengali(date: Date = new Date()): BengaliDate {
   // If we're before 14 Apr, we're still in the previous Bangabda year.
   const isBeforeNewYear = gMonth < 4 || (gMonth === 4 && gDay < 14);
   const startGYear = isBeforeNewYear ? gYear - 1 : gYear;
-  const bYear = startGYear + 593; // e.g. 2026 → 1432 (then +1 once we cross Apr 14)
+  // Bangabda = Gregorian − 593 (since the era began in 593 CE).
+  // Example: 14 April 2026 → 1433 BS.
+  const bYear = startGYear - 593;
 
   // Days elapsed since 14 Apr `startGYear`.
   const newYearMs = Date.UTC(startGYear, 3, 14); // Apr = month index 3
