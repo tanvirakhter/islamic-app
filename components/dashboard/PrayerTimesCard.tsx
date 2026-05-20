@@ -13,7 +13,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { getServerTranslator } from "@/lib/i18n/server";
-import { getRakats, getEndTime, totalRakats } from "@/lib/prayer-info";
+import { getRakats, getEndTime, totalRakats, PRAYER_GRADIENTS } from "@/lib/prayer-info";
 import { toBanglaDigits } from "@/lib/bengali-calendar";
 
 interface Props {
@@ -68,25 +68,37 @@ export function PrayerTimesCard({ city, timings }: Props) {
       </CardHeader>
 
       {next && (
-        <div className="mb-6 flex items-center justify-between rounded-2xl bg-brand-600 p-5 text-white shadow-sm">
-          <div>
-            <p className={`text-xs uppercase tracking-[0.14em] text-brand-100 ${fontClass}`}>
-              {t("card.nextPrayer")}
-            </p>
-            <p className={`mt-1 text-2xl font-semibold tracking-tight ${fontClass}`}>
-              {prayerName(next.prayer.name)}
-            </p>
-            <p className={`text-sm text-brand-100 ${fontClass}`}>
-              {t("card.at")} {to12h(next.prayer.time)}
-            </p>
-          </div>
-          <div className="text-right">
-            <p className={`text-xs uppercase tracking-[0.14em] text-brand-100 ${fontClass}`}>
-              {t("card.in")}
-            </p>
-            <p className="mt-1 text-3xl font-semibold tabular-nums tracking-tight">
-              {formatCountdown(next.minutesUntil)}
-            </p>
+        // Per-prayer "sky" gradient. The inline `background` wins over Tailwind
+        // utilities cleanly. A subtle dark scrim under the text keeps contrast
+        // legible on the lighter horizons (Dhuhr/Asr/Maghrib end pale).
+        <div
+          className="relative mb-6 overflow-hidden rounded-2xl text-white shadow-sm"
+          style={{ background: PRAYER_GRADIENTS[next.prayer.name] }}
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/30"
+          />
+          <div className="relative flex items-center justify-between p-5 [text-shadow:0_1px_3px_rgba(0,0,0,0.35)]">
+            <div>
+              <p className={`text-xs uppercase tracking-[0.14em] text-white/80 ${fontClass}`}>
+                {t("card.nextPrayer")}
+              </p>
+              <p className={`mt-1 text-2xl font-semibold tracking-tight ${fontClass}`}>
+                {prayerName(next.prayer.name)}
+              </p>
+              <p className={`text-sm text-white/85 ${fontClass}`}>
+                {t("card.at")} {to12h(next.prayer.time)}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className={`text-xs uppercase tracking-[0.14em] text-white/80 ${fontClass}`}>
+                {t("card.in")}
+              </p>
+              <p className="mt-1 text-3xl font-semibold tabular-nums tracking-tight">
+                {formatCountdown(next.minutesUntil)}
+              </p>
+            </div>
           </div>
         </div>
       )}

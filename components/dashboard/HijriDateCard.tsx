@@ -6,7 +6,6 @@ import {
   hijriEraSuffix,
   localizedHijriDay,
   localizedHijriMonth,
-  localizedHijriWeekday,
   localizedHijriYear,
 } from "@/lib/hijri";
 
@@ -27,7 +26,6 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
   const hijriDay = localizedHijriDay(hijri, locale);
   const hijriMonth = localizedHijriMonth(hijri, locale);
   const hijriYear = localizedHijriYear(hijri, locale);
-  const hijriWeekday = localizedHijriWeekday(hijri, locale);
   const hijriEra = hijriEraSuffix(locale);
 
   const [d, m, y] = gregorian.split("-").map(Number);
@@ -64,7 +62,7 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
         <p className={`text-lg font-medium text-white/85 ${fontClass}`}>{hijriMonth}</p>
       </div>
       <p className={`mt-1 text-sm text-white/65 ${fontClass}`}>
-        {hijriYear} {hijriEra} · {hijriWeekday}
+        {hijriYear} {hijriEra}
       </p>
 
       {/* Bangabda — secondary. */}

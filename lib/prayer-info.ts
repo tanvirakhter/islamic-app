@@ -90,3 +90,22 @@ export function getEndTime(
   const target = timings.find((t) => t.name === next);
   return target ? { time: target.time, nextPrayer: next } : null;
 }
+
+// Per-prayer "sky" gradients — vertical sweep from zenith to horizon, matching
+// each prayer's natural lighting. Applied to the "Next Prayer" hero banner.
+// Sunrise is included as a graceful fallback even though `getNextPrayer()`
+// filters it out (it's not a prayer, just a marker).
+export const PRAYER_GRADIENTS: Record<PrayerName, string> = {
+  Fajr:
+    "linear-gradient(180deg, #050714 0%, #0D1333 25%, #1A1A4A 45%, #2D2060 65%, #6B3A7D 82%, #C4607A 93%, #E8A090 100%)",
+  Sunrise:
+    "linear-gradient(180deg, #1A1A4A 0%, #6B3A7D 30%, #C4607A 60%, #E8A090 85%, #F5D090 100%)",
+  Dhuhr:
+    "linear-gradient(180deg, #0A3D7A 0%, #1565C0 18%, #2196C9 38%, #5BB8D4 58%, #A8D8E8 75%, #D4EEF7 88%, #F0F8FF 100%)",
+  Asr:
+    "linear-gradient(180deg, #1A4A7A 0%, #2B72A8 22%, #4A9BAD 42%, #7EC8A0 60%, #C9B86A 76%, #E8C94A 88%, #F5E090 100%)",
+  Maghrib:
+    "linear-gradient(180deg, #1A0A3A 0%, #3D1560 20%, #7B2560 40%, #C0403A 58%, #E8702A 72%, #F5A030 84%, #F5C84A 94%, #F5E0A0 100%)",
+  Isha:
+    "linear-gradient(180deg, #020408 0%, #050D1A 20%, #080F2E 40%, #0C1845 58%, #0F1F5C 75%, #102040 88%, #0A1828 100%)",
+};
