@@ -1,4 +1,4 @@
-// Locale config — single source of truth. Cookie name shared between client + server.
+// Locale config, single source of truth. Cookie name shared between client + server.
 export const LOCALES = ["en", "bn"] as const;
 export type Locale = (typeof LOCALES)[number];
 

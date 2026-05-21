@@ -93,6 +93,14 @@ const config: Config = {
           "0%": { backgroundPosition: "200% 0" },
           "100%": { backgroundPosition: "-200% 0" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "ken-burns": {
+          from: { transform: "scale(1)" },
+          to: { transform: "scale(1.12)" },
+        },
       },
       animation: {
         "spin-slow": "spin 6s linear infinite",
@@ -105,6 +113,8 @@ const config: Config = {
         "splash-zoom": "splash-zoom 0.7s cubic-bezier(0.16, 1, 0.3, 1) both",
         twinkle: "twinkle 2.6s ease-in-out infinite",
         shimmer: "shimmer 3s linear infinite",
+        marquee: "marquee 20s linear infinite",
+        "ken-burns": "ken-burns 14s ease-in-out infinite alternate",
       },
     },
   },

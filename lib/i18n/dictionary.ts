@@ -1,7 +1,7 @@
 import type { Locale } from "./config";
 
 // Flat dictionary keyed by string id. Keep keys descriptive so missing-key bugs are obvious.
-// Both locales must define every key — TS will catch drift.
+// Both locales must define every key, TS will catch drift.
 export const dictionary = {
   en: {
     "nav.dashboard": "Dashboard",
@@ -12,6 +12,7 @@ export const dictionary = {
     "nav.umrah": "Umrah",
     "nav.qibla": "Qibla",
     "nav.zakat": "Zakat",
+    "nav.learn": "Learn",
     "nav.toggleAria": "Toggle navigation",
     "lang.label": "Language",
     "lang.english": "English",
@@ -29,10 +30,57 @@ export const dictionary = {
 
     "dashboard.greeting": "Assalamu Alaikum",
     "dashboard.heroTitle": "A peaceful start to your day",
+    "dashboard.heroTitlePre": "A peaceful start to",
+    "dashboard.heroTitleAccent": "your",
+    "dashboard.heroTitlePost": "day",
     "dashboard.heroSubtitle": "Today is",
     "dashboard.in": "in",
     "dashboard.metaDescription":
-      "Today's Ayat, Hadith, prayer times, and Hijri date — at a glance, designed for Bangladesh.",
+      "Today's Ayat, Hadith, prayer times, and Hijri date, at a glance, designed for Bangladesh.",
+
+    "hero.trustBadge": "Built for peaceful living.",
+    "hero.surahs": "Surahs",
+    "hero.surahsInQuran": "Surahs in Quran",
+    "hero.dailyPrayers": "Daily Prayers",
+    "hero.statPrayers": "Daily Prayer Times",
+    "hero.statQibla": "Qibla Direction",
+    "hero.startJourney": "Start your journey",
+    "hero.freeToUse": "Free to use",
+    "hero.usedByPre": "Used by",
+    "hero.usedByBold": "1,00,000+ Muslims",
+    "hero.usedByPost": "across the country",
+    "hero.dhikrTag": "Dhikr",
+    "hero.dhikrMeaning": "All praise is due to Allah",
+    "hero.bodyCopy":
+      "Daily prayers, Quran, and guidance, everything you need, in one place.",
+    "hero.exploreCta": "Explore Features",
+    "hero.daily": "Daily",
+    "hero.stayConsistent": "Stay consistent.",
+
+    "dashboard.featuredTitle": "Featured Surahs",
+    "dashboard.featuredSubtitle": "Begin with these beloved chapters",
+    "dashboard.exploreTitle": "Explore",
+    "dashboard.exploreSubtitle": "Everything you need, in one place",
+
+    "explore.quran": "Read all 114 surahs with Bangla translation",
+    "explore.prayerTimes": "Accurate times for every Bangladesh city",
+    "explore.qibla": "Find the direction of the Ka'bah",
+    "explore.zakat": "Calculate your annual zakat in minutes",
+    "explore.ramadan": "Sehri & iftar timings for Ramadan",
+    "explore.hajj": "A step-by-step pilgrimage guide",
+    "explore.umrah": "The rites of Umrah, simply explained",
+
+    "cta.verse":
+      "Those who believe and whose hearts find rest in the remembrance of Allah. Verily, in the remembrance of Allah do hearts find rest.",
+    "cta.reference": "Surah Ar-Ra'd · 13:28",
+    "cta.button": "Read the Quran",
+
+    "pillars.eyebrow": "Islam",
+    "pillars.title": "The Five Pillars",
+    "pillars.subtitle": "The foundation of every Muslim's faith and practice.",
+    "pillars.pillarLabel": "Pillar",
+    "pillars.ofFive": "of 05",
+    "pillars.home": "Home",
 
     "card.today": "Today",
     "card.gregorian": "Gregorian",
@@ -51,7 +99,7 @@ export const dictionary = {
     "prayer.endsAt": "Ends at",
     "prayer.endsAtNextDay": "Ends before Fajr (next day)",
     "prayer.sunriseNote":
-      "Sunrise is the cutoff for Fajr — it is not itself a prayer.",
+      "Sunrise is the cutoff for Fajr, it is not itself a prayer.",
     "prayer.tapForDetails": "Tap for rakats & end time",
 
     "jumma.title": "Jumma",
@@ -111,7 +159,7 @@ export const dictionary = {
     "page.qibla.eyebrow": "Qibla Finder",
     "page.qibla.title": "Find the direction of the Ka'bah",
     "page.qibla.description":
-      "Calculated from your live location using the great-circle bearing — works anywhere in Bangladesh and the world.",
+      "Calculated from your live location using the great-circle bearing, works anywhere in Bangladesh and the world.",
 
     "page.zakat.eyebrow": "Zakat Calculator",
     "page.zakat.title": "Calculate your Zakat",
@@ -136,7 +184,7 @@ export const dictionary = {
     "zakat.field.debtsHint": "Due within 12 months: bills, rent, instalments",
     "zakat.field.basis": "Nisab basis",
     "zakat.field.basisHint":
-      "Silver basis is lower, so it captures more wealth as zakatable — the recommended choice when you have mixed assets.",
+      "Silver basis is lower, so it captures more wealth as zakatable, the recommended choice when you have mixed assets.",
     "zakat.field.goldPrice": "Gold price (BDT / gram)",
     "zakat.field.silverPrice": "Silver price (BDT / gram)",
     "zakat.field.priceHint": "Update with the current market price",
@@ -148,17 +196,21 @@ export const dictionary = {
     "zakat.summary.nisab": "Nisab threshold",
     "zakat.summary.zakatDue": "Zakat due (2.5%)",
     "zakat.summary.belowNisab":
-      "Your net wealth is below the nisab — no zakat is due this year.",
+      "Your net wealth is below the nisab, no zakat is due this year.",
     "zakat.summary.note":
       "This is an estimate. Confirm details with a qualified scholar before paying.",
     "zakat.reset": "Reset",
 
     "footer.tagline":
-      "A modern Islamic companion built for Bangladesh — Quran with Bangla translation, prayer times, Ramadan and Hajj guides.",
+      "A modern Islamic companion built for Bangladesh, Quran with Bangla translation, prayer times, Ramadan and Hajj guides.",
     "footer.explore": "Explore",
     "footer.guides": "Guides",
     "footer.about": "About",
+    "footer.information": "Information",
+    "footer.privacy": "Privacy",
+    "footer.terms": "Terms & Policy",
     "footer.copyright": "Noor Bangladesh. Built with care.",
+    "footer.bottomLeft": "Noor Bangladesh. Created with care and love.",
 
     "notFound.title": "Page not found",
     "notFound.description":
@@ -173,7 +225,7 @@ export const dictionary = {
       {
         day: "9 Dhul-Hijjah",
         title: "Yawm Arafah",
-        body: "Stand on the plain of Arafah from after Dhuhr until sunset — the essence of Hajj.",
+        body: "Stand on the plain of Arafah from after Dhuhr until sunset, the essence of Hajj.",
       },
       {
         day: "9 Dhul-Hijjah (night)",
@@ -230,6 +282,7 @@ export const dictionary = {
     "nav.umrah": "উমরাহ",
     "nav.qibla": "কিবলা",
     "nav.zakat": "যাকাত",
+    "nav.learn": "শিখুন",
     "nav.toggleAria": "মেনু খুলুন",
     "lang.label": "ভাষা",
     "lang.english": "English",
@@ -247,10 +300,57 @@ export const dictionary = {
 
     "dashboard.greeting": "আসসালামু আলাইকুম",
     "dashboard.heroTitle": "আপনার দিনের শান্তিময় সূচনা",
+    "dashboard.heroTitlePre": "",
+    "dashboard.heroTitleAccent": "আপনার",
+    "dashboard.heroTitlePost": "দিনের শান্তিময় সূচনা",
     "dashboard.heroSubtitle": "আজ",
-    "dashboard.in": "—",
+    "dashboard.in": "·",
     "dashboard.metaDescription":
-      "আজকের আয়াত, হাদিস, নামাজের সময় ও হিজরি তারিখ — এক নজরে, বাংলাদেশের জন্য তৈরি।",
+      "আজকের আয়াত, হাদিস, নামাজের সময় ও হিজরি তারিখ, এক নজরে, বাংলাদেশের জন্য তৈরি।",
+
+    "hero.trustBadge": "প্রশান্ত জীবনের জন্য তৈরি।",
+    "hero.surahs": "সূরা",
+    "hero.surahsInQuran": "কুরআনের সূরা",
+    "hero.dailyPrayers": "দৈনিক নামাজ",
+    "hero.statPrayers": "দৈনিক নামাজের সময়",
+    "hero.statQibla": "কিবলার দিক",
+    "hero.startJourney": "আপনার যাত্রা শুরু করুন",
+    "hero.freeToUse": "বিনামূল্যে ব্যবহারযোগ্য",
+    "hero.usedByPre": "দেশজুড়ে",
+    "hero.usedByBold": "১,০০,০০০+ মুসলিম",
+    "hero.usedByPost": "ব্যবহার করছেন",
+    "hero.dhikrTag": "যিকর",
+    "hero.dhikrMeaning": "সকল প্রশংসা আল্লাহর জন্য",
+    "hero.bodyCopy":
+      "দৈনিক নামাজ, কুরআন ও দিকনির্দেশনা, আপনার যা প্রয়োজন, সব এক জায়গায়।",
+    "hero.exploreCta": "ফিচার দেখুন",
+    "hero.daily": "প্রতিদিন",
+    "hero.stayConsistent": "অবিচল থাকুন।",
+
+    "dashboard.featuredTitle": "নির্বাচিত সূরা",
+    "dashboard.featuredSubtitle": "প্রিয় এই সূরাগুলো দিয়ে শুরু করুন",
+    "dashboard.exploreTitle": "অন্বেষণ",
+    "dashboard.exploreSubtitle": "আপনার যা প্রয়োজন, সব এক জায়গায়",
+
+    "explore.quran": "বাংলা অনুবাদসহ ১১৪টি সূরা পড়ুন",
+    "explore.prayerTimes": "বাংলাদেশের প্রতিটি শহরের সঠিক সময়",
+    "explore.qibla": "কাবার দিক নির্ণয় করুন",
+    "explore.zakat": "কয়েক মিনিটে আপনার বার্ষিক যাকাত হিসাব করুন",
+    "explore.ramadan": "রমজানের সেহরি ও ইফতারের সময়সূচি",
+    "explore.hajj": "ধাপে ধাপে হজ্জের নির্দেশিকা",
+    "explore.umrah": "সহজভাবে উমরাহর আনুষ্ঠানিকতা",
+
+    "cta.verse":
+      "যারা ঈমান আনে এবং আল্লাহর স্মরণে যাদের অন্তর প্রশান্ত হয়। জেনে রাখো, আল্লাহর স্মরণেই অন্তর প্রশান্তি লাভ করে।",
+    "cta.reference": "সূরা আর-রাদ · ১৩:২৮",
+    "cta.button": "কুরআন পড়ুন",
+
+    "pillars.eyebrow": "ইসলাম",
+    "pillars.title": "ইসলামের পাঁচ স্তম্ভ",
+    "pillars.subtitle": "প্রত্যেক মুসলিমের বিশ্বাস ও অনুশীলনের ভিত্তি।",
+    "pillars.pillarLabel": "স্তম্ভ",
+    "pillars.ofFive": "/ ০৫",
+    "pillars.home": "হোম",
 
     "card.today": "আজকের তারিখ",
     "card.gregorian": "গ্রেগরিয়ান",
@@ -262,14 +362,14 @@ export const dictionary = {
     "card.surah": "সূরা",
     "card.nextPrayer": "পরবর্তী নামাজ",
     "card.in": "বাকি",
-    "card.at": "—",
+    "card.at": "·",
 
     "prayer.rakats": "রাকাত",
     "prayer.totalRakats": "রাকাত মোট",
     "prayer.endsAt": "শেষ হয়",
     "prayer.endsAtNextDay": "ফজরের আগে শেষ হয় (পরের দিন)",
     "prayer.sunriseNote":
-      "সূর্যোদয় ফজরের শেষ সীমা — এটি নিজে কোনো নামাজ নয়।",
+      "সূর্যোদয় ফজরের শেষ সীমা, এটি নিজে কোনো নামাজ নয়।",
     "prayer.tapForDetails": "রাকাত ও সময় দেখতে ট্যাপ করুন",
 
     "jumma.title": "জুমা",
@@ -302,7 +402,7 @@ export const dictionary = {
     "quran.bismillah": "পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে।",
 
     "page.prayerTimes.eyebrow": "নামাজের সময়সূচি",
-    "page.prayerTimes.titlePrefix": "নামাজের সময় —",
+    "page.prayerTimes.titlePrefix": "নামাজের সময়",
 
     "page.ramadan.eyebrow": "রমজান",
     "page.ramadan.title": "সেহরি ও ইফতারের সময়সূচি",
@@ -324,12 +424,12 @@ export const dictionary = {
     "page.umrah.eyebrow": "উমরাহ",
     "page.umrah.title": "উমরাহর আনুষ্ঠানিকতা",
     "page.umrah.description":
-      "উমরাহ বছরের যেকোনো সময়ে পালন করা যায় — এটি একটি সুন্দর ও মনোযোগী ইবাদত।",
+      "উমরাহ বছরের যেকোনো সময়ে পালন করা যায়, এটি একটি সুন্দর ও মনোযোগী ইবাদত।",
 
     "page.qibla.eyebrow": "কিবলা নির্দেশক",
     "page.qibla.title": "কাবার দিক নির্ণয় করুন",
     "page.qibla.description":
-      "আপনার লাইভ অবস্থান থেকে গ্রেট-সার্কেল দিকনির্দেশ গণনা করে — বাংলাদেশ ও বিশ্বের যেকোনো জায়গায় কাজ করে।",
+      "আপনার লাইভ অবস্থান থেকে গ্রেট-সার্কেল দিকনির্দেশ গণনা করে, বাংলাদেশ ও বিশ্বের যেকোনো জায়গায় কাজ করে।",
 
     "page.zakat.eyebrow": "যাকাত ক্যালকুলেটর",
     "page.zakat.title": "আপনার যাকাত হিসাব করুন",
@@ -354,7 +454,7 @@ export const dictionary = {
     "zakat.field.debtsHint": "১২ মাসের মধ্যে পরিশোধযোগ্য: বিল, ভাড়া, কিস্তি",
     "zakat.field.basis": "নিসাবের ভিত্তি",
     "zakat.field.basisHint":
-      "রৌপ্যের ভিত্তি কম, তাই মিশ্র সম্পদ থাকলে এটি বেছে নেওয়াই উত্তম — বেশি সম্পদ যাকাতযোগ্য হয়।",
+      "রৌপ্যের ভিত্তি কম, তাই মিশ্র সম্পদ থাকলে এটি বেছে নেওয়াই উত্তম, বেশি সম্পদ যাকাতযোগ্য হয়।",
     "zakat.field.goldPrice": "স্বর্ণের মূল্য (টাকা / গ্রাম)",
     "zakat.field.silverPrice": "রৌপ্যের মূল্য (টাকা / গ্রাম)",
     "zakat.field.priceHint": "বর্তমান বাজারমূল্য অনুযায়ী আপডেট করুন",
@@ -366,17 +466,21 @@ export const dictionary = {
     "zakat.summary.nisab": "নিসাব সীমা",
     "zakat.summary.zakatDue": "প্রদেয় যাকাত (২.৫%)",
     "zakat.summary.belowNisab":
-      "আপনার নিট সম্পদ নিসাবের নিচে — এই বছর কোনো যাকাত প্রযোজ্য নয়।",
+      "আপনার নিট সম্পদ নিসাবের নিচে, এই বছর কোনো যাকাত প্রযোজ্য নয়।",
     "zakat.summary.note":
       "এটি একটি আনুমানিক হিসাব। পরিশোধের আগে যোগ্য আলেমের পরামর্শ নিন।",
     "zakat.reset": "রিসেট",
 
     "footer.tagline":
-      "বাংলাদেশের জন্য তৈরি একটি আধুনিক ইসলামিক সঙ্গী — বাংলা অনুবাদসহ কুরআন, নামাজের সময়, রমজান ও হজ্জের নির্দেশিকা।",
+      "বাংলাদেশের জন্য তৈরি একটি আধুনিক ইসলামিক সঙ্গী, বাংলা অনুবাদসহ কুরআন, নামাজের সময়, রমজান ও হজ্জের নির্দেশিকা।",
     "footer.explore": "অন্বেষণ",
     "footer.guides": "নির্দেশিকা",
     "footer.about": "সম্পর্কে",
+    "footer.information": "তথ্য",
+    "footer.privacy": "গোপনীয়তা",
+    "footer.terms": "শর্তাবলী ও নীতি",
     "footer.copyright": "নূর বাংলাদেশ। যত্ন সহকারে তৈরি।",
+    "footer.bottomLeft": "নূর বাংলাদেশ। যত্ন ও ভালোবাসার সাথে তৈরি।",
 
     "notFound.title": "পেজটি পাওয়া যায়নি",
     "notFound.description":
@@ -391,7 +495,7 @@ export const dictionary = {
       {
         day: "৯ জিলহজ্জ",
         title: "ইয়াওমুল আরাফাহ",
-        body: "যোহরের পর থেকে সূর্যাস্ত পর্যন্ত আরাফার ময়দানে অবস্থান করুন — এটিই হজ্জের প্রাণ।",
+        body: "যোহরের পর থেকে সূর্যাস্ত পর্যন্ত আরাফার ময়দানে অবস্থান করুন, এটিই হজ্জের প্রাণ।",
       },
       {
         day: "৯ জিলহজ্জ (রাত)",
@@ -430,7 +534,7 @@ export const dictionary = {
       },
       {
         title: "সাফা ও মারওয়ার মাঝে সাঈ",
-        body: "সাফা থেকে শুরু করে মারওয়ায় শেষ — দুই পাহাড়ের মাঝে সাত বার যাতায়াত।",
+        body: "সাফা থেকে শুরু করে মারওয়ায় শেষ, দুই পাহাড়ের মাঝে সাত বার যাতায়াত।",
       },
       {
         title: "হলক বা তাকসীর",

@@ -15,7 +15,7 @@ export function createClient() {
           return cookieStore.getAll();
         },
         setAll(cookiesToSet) {
-          // In Server Components Next.js disallows mutating cookies — swallow the error.
+          // In Server Components Next.js disallows mutating cookies, swallow the error.
           // The middleware refresh handler is responsible for writing them in that case.
           try {
             cookiesToSet.forEach(({ name, value, options }) =>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 // Total splash duration: HOLD_MS show + EXIT_MS fade-out = on-screen time.
-// Tuned to be snappy (~1.8 s total) — long enough for the ornament zoom + bismillah
+// Tuned to be snappy (~1.8 s total), long enough for the ornament zoom + bismillah
 // + wordmark to settle, short enough that returning visitors aren't slowed down.
 const HOLD_MS = 1400;
 const EXIT_MS = 400;
@@ -66,9 +66,9 @@ export function SplashScreen() {
 
       <TwinklingStars />
 
-      {/* Geometric ornament — the centerpiece */}
+      {/* Geometric ornament, the centerpiece */}
       <div className="relative z-10 h-44 w-44 animate-splash-zoom sm:h-56 sm:w-56">
-        {/* Outer dotted ring — counter-rotating */}
+        {/* Outer dotted ring, counter-rotating */}
         <div className="absolute inset-0 animate-spin-reverse-slower">
           <svg viewBox="0 0 100 100" className="h-full w-full text-white/40">
             <circle
@@ -95,7 +95,7 @@ export function SplashScreen() {
           </svg>
         </div>
 
-        {/* 8-pointed star — two stacked rounded squares, clockwise spin */}
+        {/* 8-pointed star, two stacked rounded squares, clockwise spin */}
         <div className="absolute inset-[14%] animate-spin-slower">
           <div className="relative h-full w-full">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-300 to-brand-600 shadow-elevated" />
@@ -103,7 +103,7 @@ export function SplashScreen() {
           </div>
         </div>
 
-        {/* Inner medallion — Noor (light) at the heart */}
+        {/* Inner medallion, Noor (light) at the heart */}
         <div className="absolute inset-[36%] grid place-items-center">
           <span
             aria-hidden
@@ -117,7 +117,7 @@ export function SplashScreen() {
         </div>
       </div>
 
-      {/* Bismillah — appears slightly after the ornament settles */}
+      {/* Bismillah, appears slightly after the ornament settles */}
       <p
         dir="rtl"
         lang="ar"
@@ -154,7 +154,7 @@ export function SplashScreen() {
 }
 
 function TwinklingStars() {
-  // Deterministic positions so SSR/CSR match — Math.random would cause hydration mismatch.
+  // Deterministic positions so SSR/CSR match, Math.random would cause hydration mismatch.
   const STARS = [
     { top: "8%", left: "12%", delay: "0s", size: "h-1 w-1" },
     { top: "18%", left: "78%", delay: "0.3s", size: "h-1.5 w-1.5" },

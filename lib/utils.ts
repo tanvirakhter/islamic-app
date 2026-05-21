@@ -1,4 +1,4 @@
-// Tiny class-name combiner — keeps Tailwind class lists readable without pulling in clsx.
+// Tiny class-name combiner, keeps Tailwind class lists readable without pulling in clsx.
 export function cn(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(" ");
 }
@@ -15,7 +15,7 @@ export function formatDhakaTime(date: Date, opts?: Intl.DateTimeFormatOptions): 
   }).format(date);
 }
 
-// Today's date in YYYY-MM-DD anchored to Dhaka — used as a stable cache key.
+// Today's date in YYYY-MM-DD anchored to Dhaka, used as a stable cache key.
 export function todayInDhaka(): string {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Dhaka",

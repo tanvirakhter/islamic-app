@@ -1,7 +1,7 @@
 import { Loader } from "@/components/ui/Loader";
 import { getServerTranslator } from "@/lib/i18n/server";
 
-// Per-route loading for surah pages — Aladhan fetch can take ~500-1500 ms.
+// Per-route loading for surah pages, Aladhan fetch can take ~500-1500 ms.
 // A focused label tells the reader what's happening instead of generic "loading".
 export default function SurahLoading() {
   const { t, locale } = getServerTranslator();

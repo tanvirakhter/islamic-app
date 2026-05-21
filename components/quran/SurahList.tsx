@@ -79,7 +79,7 @@ export function SurahList({ surahs }: Props) {
               <Link href={`/quran/${s.number}`} className="block">
                 <Card className="transition hover:-translate-y-0.5 hover:shadow-elevated">
                   <div className="flex items-start gap-4">
-                    {/* Number badge — diamond-shaped to mirror traditional Mushaf design. */}
+                    {/* Number badge, diamond-shaped to mirror traditional Mushaf design. */}
                     <span className="relative grid h-11 w-11 shrink-0 place-items-center">
                       <span className="absolute inset-0 rotate-45 rounded-md bg-brand-50" />
                       <span className="relative text-sm font-semibold text-brand-700">

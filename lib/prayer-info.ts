@@ -20,7 +20,7 @@ const RAKATS: Record<PrayerName, RakatUnit[]> = {
     { count: 2, category: "sunnah" },
     { count: 2, category: "fard" },
   ],
-  Sunrise: [], // not a prayer — kept so the type stays exhaustive
+  Sunrise: [], // not a prayer, kept so the type stays exhaustive
   Dhuhr: [
     { count: 4, category: "sunnah" },
     { count: 4, category: "fard" },
@@ -78,7 +78,7 @@ const ENDS_AT: Record<PrayerName, PrayerName | null> = {
   Dhuhr: "Asr",
   Asr: "Maghrib",
   Maghrib: "Isha",
-  Isha: "Fajr", // technically next day's Fajr — caller should label appropriately
+  Isha: "Fajr", // technically next day's Fajr, caller should label appropriately
 };
 
 export function getEndTime(
@@ -91,7 +91,7 @@ export function getEndTime(
   return target ? { time: target.time, nextPrayer: next } : null;
 }
 
-// Per-prayer "sky" gradients — vertical sweep from zenith to horizon, matching
+// Per-prayer "sky" gradients, vertical sweep from zenith to horizon, matching
 // each prayer's natural lighting. Applied to the "Next Prayer" hero banner.
 // Sunrise is included as a graceful fallback even though `getNextPrayer()`
 // filters it out (it's not a prayer, just a marker).

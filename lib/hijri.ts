@@ -52,7 +52,7 @@ export function localizedHijriWeekday(hijri: HijriDate, locale: Locale): string 
   return hijri.weekday;
 }
 
-// "AH" suffix — কেপ্টে "হিজরি" reads more natural in Bangla.
+// "AH" suffix, কেপ্টে "হিজরি" reads more natural in Bangla.
 export function hijriEraSuffix(locale: Locale): string {
   return locale === "bn" ? "হিজরি" : "AH";
 }

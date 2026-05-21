@@ -27,7 +27,7 @@
     @apply rounded-2xl border border-black/5 bg-white/70 shadow-card backdrop-blur-xl;
   }
 
-  /* Soft section heading — balances density on the dashboard. */
+  /* Soft section heading, balances density on the dashboard. */
   .section-title {
     @apply text-sm font-medium uppercase tracking-[0.14em] text-ink-muted;
   }

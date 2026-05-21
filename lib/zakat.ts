@@ -1,4 +1,4 @@
-// Zakat calculator math — pure, no DOM/i18n. UI handles formatting & labels.
+// Zakat calculator math, pure, no DOM/i18n. UI handles formatting & labels.
 //
 // Reference figures (Hanafi school, the prevailing fiqh in Bangladesh):
 //   • Zakat rate: 2.5% of net zakatable wealth held for one lunar year (hawl).
@@ -6,7 +6,7 @@
 //       - Gold:   87.48 g (≈ 7.5 tola)
 //       - Silver: 612.36 g (≈ 52.5 tola)
 //     Silver nisab is lower, so when a person owns mixed assets the silver
-//     basis is recommended — it benefits more poor people.
+//     basis is recommended, it benefits more poor people.
 
 export const ZAKAT_RATE = 0.025;
 export const NISAB_GOLD_GRAMS = 87.48;

@@ -9,7 +9,7 @@ import { getServerTranslator } from "@/lib/i18n/server";
 import { toBanglaDigits } from "@/lib/bengali-calendar";
 import { cn } from "@/lib/utils";
 
-// Pre-render all 114 surahs at build time — they never change.
+// Pre-render all 114 surahs at build time, they never change.
 export const dynamicParams = false;
 export const revalidate = 60 * 60 * 24; // 1 day
 
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const meta = findSurah(id)!;
   return {
     title: `${meta.name} · ${meta.banglaName}`,
-    description: `Surah ${meta.name} (${meta.arabicName}) — ${meta.ayahs} ayahs with Bangla translation.`,
+    description: `Surah ${meta.name} (${meta.arabicName}), ${meta.ayahs} ayahs with Bangla translation.`,
   };
 }
 
@@ -90,7 +90,7 @@ export default async function SurahPage({ params }: Props) {
         </div>
       </header>
 
-      {/* Bismillah block — shown above every surah except At-Tawbah and Al-Fatihah
+      {/* Bismillah block, shown above every surah except At-Tawbah and Al-Fatihah
           (whose first ayah is the basmala itself, so we don't double it). */}
       {showBismillah && (
         <Card className="mt-6 text-center">
@@ -144,7 +144,7 @@ export default async function SurahPage({ params }: Props) {
                   : a.bangla}
               </p>
 
-              {/* Secondary translation — show the *other* language as well so users
+              {/* Secondary translation, show the *other* language as well so users
                   who toggle locales still see both translations side-by-side. */}
               {locale === "bn" && a.english && (
                 <p className="mt-2 text-sm italic leading-relaxed text-ink-muted">

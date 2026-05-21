@@ -23,7 +23,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-// Reasonable BD market defaults — user can override in the Settings section.
+// Reasonable BD market defaults, user can override in the Settings section.
 // These are not live prices; the form makes that explicit with the helper text.
 const DEFAULT_GOLD_BDT_PER_GRAM = 10_500;
 const DEFAULT_SILVER_BDT_PER_GRAM = 130;
@@ -73,7 +73,7 @@ export function ZakatCalculator() {
     setBasis("silver");
   };
 
-  // Live computation — re-runs on every keystroke. Cheap enough to not memo, but
+  // Live computation, re-runs on every keystroke. Cheap enough to not memo, but
   // useMemo keeps reference stable for the summary card.
   const result = useMemo(
     () =>
@@ -97,7 +97,7 @@ export function ZakatCalculator() {
   );
 
   // Money formatter: uses Indian-lakh separators in EN (12,34,567) and Bangla
-  // numerals + lakh separators in BN (১২,৩৪,৫৬৭) — natural for BDT amounts.
+  // numerals + lakh separators in BN (১২,৩৪,৫৬৭), natural for BDT amounts.
   const fmt = (n: number): string => {
     const rounded = Math.round(n);
     const enFormatted = new Intl.NumberFormat("en-IN").format(rounded);
@@ -186,7 +186,7 @@ export function ZakatCalculator() {
             {t("zakat.section.settings")}
           </SectionTitle>
 
-          {/* Nisab basis — segmented control. Silver is default & recommended. */}
+          {/* Nisab basis, segmented control. Silver is default & recommended. */}
           <p className={`mt-4 text-sm font-medium text-ink ${fontClass}`}>
             {t("zakat.field.basis")}
           </p>

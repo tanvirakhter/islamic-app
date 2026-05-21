@@ -1,7 +1,7 @@
 // Qibla bearing calculation. Pure math, no DOM/network.
 //
 // We compute the great-circle initial bearing from the user's coordinates to
-// the Ka'bah (21.4225°N, 39.8262°E) — the angle, measured clockwise from
+// the Ka'bah (21.4225°N, 39.8262°E), the angle, measured clockwise from
 // true north, in which a person should face.
 
 export const KAABA_LAT = 21.4225;
@@ -29,7 +29,7 @@ export function qiblaBearing(lat: number, lng: number): number {
 }
 
 /**
- * Great-circle distance (km) — useful for the "distance to Makkah" stat.
+ * Great-circle distance (km), useful for the "distance to Makkah" stat.
  * Haversine formula; Earth radius = 6371 km.
  */
 export function distanceToKaaba(lat: number, lng: number): number {

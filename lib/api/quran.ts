@@ -9,7 +9,7 @@ const TOTAL_AYAH = 6236;
 const EDITIONS = ["quran-uthmani", "bn.bengali", "en.sahih"].join(",");
 
 function ayahForToday(): number {
-  // Day-of-year based pick — stable per day, varies across the year.
+  // Day-of-year based pick, stable per day, varies across the year.
   const now = new Date();
   const start = Date.UTC(now.getUTCFullYear(), 0, 0);
   const diff = now.getTime() - start;
@@ -56,7 +56,7 @@ interface AladhanSurahEdition {
 }
 
 export async function fetchSurah(surahNumber: number): Promise<SurahDetail> {
-  // Batched multi-edition fetch — Arabic, Bangla, English in one call.
+  // Batched multi-edition fetch, Arabic, Bangla, English in one call.
   const res = await fetch(
     `${QURAN_BASE}/surah/${surahNumber}/editions/${EDITIONS}`,
     { next: { revalidate: 60 * 60 * 24 } } // The Quran does not change.

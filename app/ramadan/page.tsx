@@ -17,8 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RamadanPage() {
   const data = await fetchPrayerTimes(DEFAULT_CITY.slug);
-  const fajr = data.timings.find((tt) => tt.name === "Fajr")?.time ?? "—";
-  const maghrib = data.timings.find((tt) => tt.name === "Maghrib")?.time ?? "—";
+  const fajr = data.timings.find((tt) => tt.name === "Fajr")?.time ?? "–";
+  const maghrib = data.timings.find((tt) => tt.name === "Maghrib")?.time ?? "–";
 
   const { t, locale } = getServerTranslator();
   const fontClass = locale === "bn" ? "font-bangla" : "";

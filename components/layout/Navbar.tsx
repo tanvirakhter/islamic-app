@@ -29,12 +29,12 @@ export function Navbar() {
   // Bangla labels are visually denser; switch to the bangla font stack when active.
   const linkFont = locale === "bn" ? "font-bangla" : "";
 
-  // No bottom border — the rounded-card edge of <main> creates the seam.
+  // No bottom border, the rounded-card edge of <main> creates the seam.
   // Slightly more translucent bg so the navbar reads as a calmer surface
   // sitting *behind* the page card.
   return (
-    <header className="sticky top-0 z-40 bg-surface-alt/80 backdrop-blur-xl">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-5 sm:px-8">
+    <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 rounded-full border border-black/5 bg-white/80 px-4 shadow-card backdrop-blur-xl sm:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
           <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-600 text-white">
             <Moon className="h-4 w-4" aria-hidden />
@@ -78,8 +78,8 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-black/5 bg-white/90 backdrop-blur-xl md:hidden">
-          <div className="mx-auto grid max-w-7xl gap-1 px-5 py-3 sm:px-8">
+        <div className="mx-auto mt-3 max-w-7xl rounded-2xl border border-black/5 bg-white/90 shadow-card backdrop-blur-xl md:hidden">
+          <div className="grid gap-1 p-3">
             {NAV_ITEMS.map((item) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               return (

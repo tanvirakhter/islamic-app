@@ -107,7 +107,7 @@ export function PrayerTimesCard({ city, timings }: Props) {
         {t("prayer.tapForDetails")}
       </p>
 
-      {/* Each prayer is a native <details> — accessible, no JS needed.
+      {/* Each prayer is a native <details>, accessible, no JS needed.
           Tapping the row reveals rakats and the prayer-window end time. */}
       <ul className="grid gap-2 sm:grid-cols-2">
         {timings.map((p) => {

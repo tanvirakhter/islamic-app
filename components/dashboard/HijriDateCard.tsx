@@ -14,7 +14,7 @@ interface Props {
   gregorian: string; // "DD-MM-YYYY" from Aladhan
 }
 
-// "Lapis to Turquoise" gradient — a full blue spectrum sweep used as the
+// "Lapis to Turquoise" gradient, a full blue spectrum sweep used as the
 // feature surface for the multi-calendar card.
 const LAPIS_TURQUOISE =
   "linear-gradient(160deg, #1B3A8C 0%, #2B5BA8 45%, #3B8FA0 80%, #4AADBE 100%)";
@@ -56,7 +56,7 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
         <CalendarDays className="h-4 w-4 text-white/60" aria-hidden />
       </div>
 
-      {/* Hijri — primary, large. */}
+      {/* Hijri, primary, large. */}
       <div className="flex items-baseline gap-3">
         <p className={`text-5xl font-semibold tracking-tight ${fontClass}`}>{hijriDay}</p>
         <p className={`text-lg font-medium text-white/85 ${fontClass}`}>{hijriMonth}</p>
@@ -65,7 +65,7 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
         {hijriYear} {hijriEra}
       </p>
 
-      {/* Bangabda — secondary. */}
+      {/* Bangabda, secondary. */}
       <div className="mt-6 border-t border-white/10 pt-4">
         <p
           className={`text-sm font-medium uppercase tracking-[0.14em] text-white/60 ${fontClass}`}
@@ -78,7 +78,7 @@ export function HijriDateCard({ hijri, gregorian }: Props) {
         <p className={`text-xs text-white/65 ${fontClass}`}>{bengaliWeekday}</p>
       </div>
 
-      {/* Gregorian — tertiary. */}
+      {/* Gregorian, tertiary. */}
       <div className="mt-4 border-t border-white/10 pt-4">
         <p className="text-sm font-medium uppercase tracking-[0.14em] text-white/60">
           {t("card.gregorian")}

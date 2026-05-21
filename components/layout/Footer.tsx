@@ -1,36 +1,65 @@
 import Link from "next/link";
-import { Moon, Compass, BookOpen, Heart } from "lucide-react";
+import { Moon, Facebook, Instagram, Linkedin } from "lucide-react";
 import { getServerTranslator } from "@/lib/i18n/server";
 import { cn } from "@/lib/utils";
 
-// Design tokens applied throughout:
-//   bg          → bg-emerald-900 (the deep emerald used by the splash backdrop)
-//   text        → text-white, with text-white/70 for body & links
-//   icon frame  → border border-white/40 rounded-lg p-2
-//   col gap     → gap-16 md:gap-24
-//   headings    → text-sm font-semibold uppercase tracking-wider
+// X (formerly Twitter) brand mark — lucide doesn't ship it.
+function XLogo() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+const SOCIALS = [
+  { label: "Facebook", icon: <Facebook className="h-4 w-4" aria-hidden /> },
+  { label: "Instagram", icon: <Instagram className="h-4 w-4" aria-hidden /> },
+  { label: "LinkedIn", icon: <Linkedin className="h-4 w-4" aria-hidden /> },
+  { label: "X", icon: <XLogo /> },
+];
+
+// Floating light-green card footer. Sits inside the page (margins on all sides)
+// over the #f4f6f4 page background so it reads as a distinct card.
 export function Footer() {
   const { t, locale } = getServerTranslator();
   const fontClass = locale === "bn" ? "font-bangla" : "";
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 bg-emerald-900 text-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-16 md:grid-cols-4 md:gap-24">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="border border-white/40 rounded-lg p-2">
-                <Moon className="h-4 w-4 text-white" aria-hidden />
-              </span>
-              <span className="text-base font-semibold">Noor Bangladesh</span>
-            </div>
-            <p className={cn("mt-4 max-w-xs text-sm text-white/70", fontClass)}>
-              {t("footer.tagline")}
-            </p>
+    <div className="mx-auto mb-6 max-w-7xl px-4 sm:px-6">
+      <footer className="overflow-hidden rounded-[20px] bg-[#e8f0e9]">
+      <div className="flex flex-col gap-12 p-12 md:flex-row md:items-start md:justify-between">
+        {/* Brand */}
+        <div className="md:max-w-sm">
+          <div className="flex items-center gap-2 font-semibold tracking-tight">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-[#0f3d24] text-white">
+              <Moon className="h-4 w-4" aria-hidden />
+            </span>
+            <span className="text-base text-[#0f3d24]">
+              Noor <span className="text-brand-700">Bangladesh</span>
+            </span>
           </div>
+          <p className={cn("mt-4 max-w-xs text-sm text-[#6b7280]", fontClass)}>
+            {t("footer.tagline")}
+          </p>
+          <div className="mt-5 flex gap-3">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href="#"
+                aria-label={s.label}
+                className="grid h-10 w-10 place-items-center rounded-full bg-[#0f3d24] text-white transition-colors hover:bg-[#0c3220]"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
 
-          <FooterCol icon={Compass} title={t("footer.explore")} fontClass={fontClass}>
+        {/* Link columns grouped to the right, with a tight gap between them */}
+        <div className="flex gap-10 sm:gap-14">
+          <FooterCol title={t("footer.explore")} fontClass={fontClass}>
             <FooterLink href="/quran" fontClass={fontClass}>{t("nav.quran")}</FooterLink>
             <FooterLink href="/prayer-times" fontClass={fontClass}>{t("nav.prayerTimes")}</FooterLink>
             <FooterLink href="/qibla" fontClass={fontClass}>{t("nav.qibla")}</FooterLink>
@@ -38,56 +67,51 @@ export function Footer() {
             <FooterLink href="/ramadan" fontClass={fontClass}>{t("nav.ramadan")}</FooterLink>
           </FooterCol>
 
-          <FooterCol icon={BookOpen} title={t("footer.guides")} fontClass={fontClass}>
+          <FooterCol title={t("footer.guides")} fontClass={fontClass}>
             <FooterLink href="/hajj" fontClass={fontClass}>{t("nav.hajj")}</FooterLink>
             <FooterLink href="/umrah" fontClass={fontClass}>{t("nav.umrah")}</FooterLink>
+            <FooterLink href="/learn/shahada" fontClass={fontClass}>{t("nav.learn")}</FooterLink>
           </FooterCol>
 
-          <FooterCol icon={Heart} title={t("footer.about")} fontClass={fontClass}>
-            <p className={cn("text-sm text-white/70", fontClass)}>
-              © {new Date().getFullYear()} {t("footer.copyright")}
-            </p>
+          <FooterCol title={t("footer.information")} fontClass={fontClass}>
+            <FooterLink href="/about" fontClass={fontClass}>{t("footer.about")}</FooterLink>
+            <FooterLink href="/privacy" fontClass={fontClass}>{t("footer.privacy")}</FooterLink>
+            <FooterLink href="/terms" fontClass={fontClass}>{t("footer.terms")}</FooterLink>
           </FooterCol>
-        </div>
-
-        {/* Bottom rule + meta strip */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/15 pt-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <p className={fontClass}>
-            © {new Date().getFullYear()} Noor Bangladesh
-          </p>
-          <p className={fontClass}>
-            {locale === "bn" ? "যত্ন সহকারে তৈরি" : "Built with care"}
-          </p>
         </div>
       </div>
-    </footer>
+
+      {/* Bottom bar */}
+      <div className="mx-12 flex justify-center border-t border-[#d1d5db] py-5">
+        <p className={cn("text-center text-[13px] text-[#6b7280]", fontClass)}>
+          © {year} {t("footer.bottomLeft")}
+        </p>
+      </div>
+      </footer>
+    </div>
   );
 }
 
-interface FooterColProps {
+function FooterCol({
+  title,
+  fontClass,
+  children,
+}: {
   title: string;
   fontClass: string;
-  icon: React.ComponentType<{ className?: string }>;
   children: React.ReactNode;
-}
-
-function FooterCol({ title, icon: Icon, fontClass, children }: FooterColProps) {
+}) {
   return (
     <div>
-      <div className="flex items-center gap-3">
-        <span className="border border-white/40 rounded-lg p-2">
-          <Icon className="h-4 w-4 text-white" aria-hidden />
-        </span>
-        <h3
-          className={cn(
-            "text-sm font-semibold uppercase tracking-wider text-white",
-            fontClass
-          )}
-        >
-          {title}
-        </h3>
-      </div>
-      <ul className="mt-5 grid gap-3">{children}</ul>
+      <h3
+        className={cn(
+          "mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[#374151]",
+          fontClass
+        )}
+      >
+        {title}
+      </h3>
+      <ul>{children}</ul>
     </div>
   );
 }
@@ -105,7 +129,10 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className={cn("text-sm text-white/70 transition-colors hover:text-white", fontClass)}
+        className={cn(
+          "block text-sm leading-[2] text-[#4b5563] transition-colors hover:text-[#0f3d24]",
+          fontClass
+        )}
       >
         {children}
       </Link>

@@ -15,7 +15,7 @@ import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { toBanglaDigits } from "@/lib/bengali-calendar";
 import { cn } from "@/lib/utils";
 
-// Status state-machine — simpler than juggling multiple booleans.
+// Status state-machine, simpler than juggling multiple booleans.
 type Status =
   | "idle" // before user grants permission
   | "locating"
@@ -108,12 +108,12 @@ export function QiblaCompass() {
     };
 
     if (typeof requestPermission === "function") {
-      // Safari iOS — needs to be triggered from a user gesture. Our "Locate me"
+      // Safari iOS, needs to be triggered from a user gesture. Our "Locate me"
       // button counts since this effect runs on its click-driven state change.
       requestPermission()
         .then((res) => res === "granted" && attach())
         .catch(() => {
-          /* user declined or browser refused — fallback shows static bearing */
+          /* user declined or browser refused, fallback shows static bearing */
         });
     } else {
       attach();
@@ -134,8 +134,8 @@ export function QiblaCompass() {
         </p>
         <p className={`mt-2 text-sm text-ink-muted ${fontClass}`}>
           {locale === "bn"
-            ? "আপনার অবস্থান কোথাও পাঠানো হয় না — সবকিছু আপনার ডিভাইসেই চলে।"
-            : "Your location stays on your device — nothing is sent to a server."}
+            ? "আপনার অবস্থান কোথাও পাঠানো হয় না, সবকিছু আপনার ডিভাইসেই চলে।"
+            : "Your location stays on your device, nothing is sent to a server."}
         </p>
         <Button onClick={requestLocation} className="mt-6">
           <MapPin className="h-4 w-4" />
@@ -195,10 +195,10 @@ export function QiblaCompass() {
 
   return (
     <div className="grid gap-6 sm:grid-cols-5">
-      {/* Compass dial — 3/5 of the row on desktop. */}
+      {/* Compass dial, 3/5 of the row on desktop. */}
       <Card className="flex flex-col items-center sm:col-span-3">
         <div className="relative aspect-square w-full max-w-sm">
-          {/* Outer ring with cardinal markings — counter-rotates by `heading`
+          {/* Outer ring with cardinal markings, counter-rotates by `heading`
               so N/E/S/W stay anchored to real-world directions when the phone
               turns, only the needle moves relative to it. */}
           <div
@@ -233,7 +233,7 @@ export function QiblaCompass() {
             ))}
           </div>
 
-          {/* Needle — rotated to `needleAngle` (already accounts for heading). */}
+          {/* Needle, rotated to `needleAngle` (already accounts for heading). */}
           <div
             className="absolute inset-0 grid place-items-center transition-transform duration-150"
             style={{ transform: `rotate(${needleAngle}deg)` }}

@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-// Shared page-header used across feature pages — keeps typography consistent.
+// Shared page-header used across feature pages, keeps typography consistent.
 export function PageHeader({ eyebrow, title, description }: Props) {
   const locale = getServerLocale();
   const fontClass = locale === "bn" ? "font-bangla" : "";

@@ -8,7 +8,7 @@ import { DEFAULT_CITY, findCityBySlug } from "@/lib/cities";
 
 // Aladhan public API. Docs: https://aladhan.com/prayer-times-api
 // We use `timingsByCity` so we don't have to maintain lat/lng lookups server-side.
-// `method=1` is the University of Islamic Sciences, Karachi calculation —
+// `method=1` is the University of Islamic Sciences, Karachi calculation,
 // the convention typically followed by Bangladesh's Islamic Foundation.
 const ALADHAN_BASE = "https://api.aladhan.com/v1";
 const CALCULATION_METHOD = 1;
@@ -49,7 +49,7 @@ interface AladhanResponse {
   data: { timings: AladhanTimings; date: AladhanDate };
 }
 
-// Aladhan returns "HH:mm (BST)" — strip the trailing timezone tag for display logic.
+// Aladhan returns "HH:mm (BST)", strip the trailing timezone tag for display logic.
 function normalizeTime(raw: string): string {
   return raw.split(" ")[0]?.trim() ?? raw;
 }
@@ -110,7 +110,7 @@ export async function fetchPrayerTimes(
 /**
  * Pick the next upcoming prayer relative to now (Asia/Dhaka).
  * Useful for the "Next prayer in …" hero on the dashboard.
- * Sunrise is intentionally excluded — it's not a prayer, just a marker.
+ * Sunrise is intentionally excluded, it's not a prayer, just a marker.
  */
 export function getNextPrayer(timings: PrayerTime[], now: Date = new Date()): {
   prayer: PrayerTime;
@@ -138,7 +138,7 @@ export function getNextPrayer(timings: PrayerTime[], now: Date = new Date()): {
     }
   }
 
-  // After Isha — next prayer is tomorrow's Fajr.
+  // After Isha, next prayer is tomorrow's Fajr.
   const fajr = candidates.find((t) => t.name === "Fajr");
   if (!fajr) return null;
   const [fh, fm] = fajr.time.split(":").map(Number);

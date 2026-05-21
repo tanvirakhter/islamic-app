@@ -15,7 +15,7 @@ const SIZE: Record<NonNullable<LoaderProps["size"]>, string> = {
 };
 
 /**
- * Noor loader — an Islamic 8-pointed star (Rub el Hizb pattern) layered over
+ * Noor loader, an Islamic 8-pointed star (Rub el Hizb pattern) layered over
  * a counter-rotating dotted ring and a soft brand halo. Pure CSS animations,
  * so it works inside Server Components too.
  *
@@ -48,7 +48,7 @@ export function Loader({
           className="absolute inset-0 -m-6 animate-glow rounded-full bg-brand-400/40 blur-3xl"
         />
 
-        {/* 2. Outer dotted ring — counter-rotating */}
+        {/* 2. Outer dotted ring, counter-rotating */}
         <div className="absolute inset-0 animate-spin-reverse-slow">
           <svg viewBox="0 0 100 100" className="h-full w-full text-brand-500">
             <circle
@@ -64,7 +64,7 @@ export function Loader({
           </svg>
         </div>
 
-        {/* 3. Eight-pointed star — clockwise rotation */}
+        {/* 3. Eight-pointed star, clockwise rotation */}
         <div className="absolute inset-[14%] animate-spin-slow">
           <div className="relative h-full w-full">
             <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 shadow-card" />
@@ -72,7 +72,7 @@ export function Loader({
           </div>
         </div>
 
-        {/* 4. Center "Noor" — light at the heart of the star */}
+        {/* 4. Center "Noor", light at the heart of the star */}
         <div className="absolute inset-0 grid place-items-center">
           <span
             aria-hidden
@@ -96,7 +96,7 @@ export function Loader({
         </p>
       )}
 
-      {/* Screen-reader-only fallback text — always present. */}
+      {/* Screen-reader-only fallback text, always present. */}
       <span className="sr-only">{label ?? "Loading"}</span>
     </div>
   );

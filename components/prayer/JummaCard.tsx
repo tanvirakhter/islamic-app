@@ -5,7 +5,7 @@ import type { PrayerTime } from "@/types";
 
 interface Props {
   city: string;
-  timings: PrayerTime[]; // today's timings — Dhuhr & Asr define the Jumma window
+  timings: PrayerTime[]; // today's timings, Dhuhr & Asr define the Jumma window
 }
 
 function to12h(hhmm: string): string {
@@ -35,8 +35,8 @@ export function JummaCard({ city, timings }: Props) {
   const { t, locale } = getServerTranslator();
   const fontClass = locale === "bn" ? "font-bangla" : "";
 
-  const dhuhr = timings.find((p) => p.name === "Dhuhr")?.time ?? "—";
-  const asr = timings.find((p) => p.name === "Asr")?.time ?? "—";
+  const dhuhr = timings.find((p) => p.name === "Dhuhr")?.time ?? "–";
+  const asr = timings.find((p) => p.name === "Asr")?.time ?? "–";
 
   const { date: friday, isToday } = getFriday();
   const fridayReadable = friday.toLocaleDateString(

@@ -2,7 +2,7 @@ import type { HadithOfDay } from "@/types";
 
 // Curated, deterministic "Hadith of the Day" pool. Public-domain authentic narrations
 // with Bangla translation. Using a static pool keeps the dashboard zero-cost and
-// removes a public-API dependency — a real deployment can swap this for a DB table.
+// removes a public-API dependency, a real deployment can swap this for a DB table.
 const HADITH_POOL: HadithOfDay[] = [
   {
     collection: "Sahih al-Bukhari",
@@ -42,7 +42,7 @@ const HADITH_POOL: HadithOfDay[] = [
     reference: "Book 27, Hadith 2004",
     bangla: "যেখানেই থাকো আল্লাহকে ভয় করো; খারাপ কাজের পরে ভালো কাজ করো, তা সেটিকে মুছে দেবে।",
     english:
-      "Fear Allah wherever you are, and follow up a bad deed with a good one — it will wipe it out.",
+      "Fear Allah wherever you are, and follow up a bad deed with a good one, it will wipe it out.",
   },
   {
     collection: "Sahih al-Bukhari",
@@ -54,7 +54,7 @@ const HADITH_POOL: HadithOfDay[] = [
 ];
 
 export async function fetchHadithOfDay(): Promise<HadithOfDay> {
-  // Same day-of-year scheme used for Ayat — keeps the page deterministic per day.
+  // Same day-of-year scheme used for Ayat, keeps the page deterministic per day.
   const now = new Date();
   const start = Date.UTC(now.getUTCFullYear(), 0, 0);
   const dayOfYear = Math.floor((now.getTime() - start) / 86_400_000);

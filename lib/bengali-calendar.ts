@@ -1,10 +1,10 @@
-// Bangladesh Bangabda (Bengali) calendar — government-revised version (2019).
+// Bangladesh Bangabda (Bengali) calendar, government-revised version (2019).
 // Rules:
 //   • New Year (Pohela Boishakh) = 14 April Gregorian, every year.
 //   • Boishakh – Bhadro (months 1–5): 31 days each.
 //   • Ashwin – Falgun (months 6–11): 30 days each.
 //   • Chaitro (month 12): 30 days, except 31 in years where Gregorian Feb has 29
-//     (i.e. when the *upcoming* Gregorian year is a leap year — keeps 1 Boishakh = Apr 14).
+//     (i.e. when the *upcoming* Gregorian year is a leap year, keeps 1 Boishakh = Apr 14).
 //
 // This is a different system from the older Indian Bengali calendar; we use the BD one
 // because the app is for Bangladesh.
@@ -89,7 +89,7 @@ function isGregorianLeap(y: number): boolean {
 // Lengths of each Bangabda month for a year that begins on 14 Apr `gYear`.
 function bengaliMonthLengths(gYear: number): number[] {
   // Chaitro (month 12) ends on 13 Apr of (gYear+1). It gets 31 days when
-  // (gYear+1) is a Gregorian leap year — that's the BD government rule.
+  // (gYear+1) is a Gregorian leap year, that's the BD government rule.
   const chaitroLength = isGregorianLeap(gYear + 1) ? 31 : 30;
   return [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30, chaitroLength];
 }
